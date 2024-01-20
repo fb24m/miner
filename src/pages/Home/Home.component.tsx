@@ -2,18 +2,24 @@ import { Container } from '@/components/Container/Container.component'
 import styles from './Home.module.scss'
 import { MouseEvent, useState } from 'react'
 
+const getRandomInt = (max: number): number => Math.floor(Math.random() * max)
+const getRandomMinusInt = (max: number): number => +`${getRandomInt(2) === 1 ? '-' : ''}${getRandomInt(max)}`
+
 const Home = () => {
 	const [dollars, setDollars] = useState([<></>])
-	const [balance, setBalance] = useState(0)
+	//@ts-expect-error windows mutation
+	const [balance, setBalance] = useState(window.Telegram.WebApp.CloudStorage.getItem('balance') ? window.Telegram.WebApp.CloudStorage.getItem('balance') : 0)
 
 	const addDollar = (e: MouseEvent<HTMLDivElement>) => {
-		setDollars([...dollars, <span style={{ top: e.clientY, left: e.clientX }}>+2</span>])
+		setDollars([...dollars, <span style={{ top: e.clientY - getRandomInt(35), left: e.clientX + getRandomMinusInt(35) }}>+2</span>])
 
 		if (dollars.length >= 100) {
 			setDollars([])
 		}
 
 		setBalance(balance + 2)
+		//@ts-expect-error windows mutation
+		window.Telegram.WebApp.CloudStorage.setItem('balance', balance)
 	}
 
 	return (
