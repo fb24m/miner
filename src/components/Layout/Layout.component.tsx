@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 export const Layout = () => {
 	return (
 		<Suspense fallback={<Spinner />}>
-			{window.matchMedia('(max-width: 425px)').matches ?
+			{window.matchMedia('(hover: none)').matches ?
 				<Outlet /> : 'Play on mobile'}
 		</Suspense>
 	)
