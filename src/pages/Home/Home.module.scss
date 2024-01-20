@@ -1,0 +1,69 @@
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+	margin-bottom: 26px;
+}
+
+.el {
+	aspect-ratio: 1/1;
+	background-color: MediumSeaGreen;
+	border-radius: 16px;
+	font-size: 14px;
+	padding: 10px;
+	color: #fff;
+}
+
+.add {
+	background-color: #eee;
+	color: #aaa;
+	font-size: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.coinContainer {
+	display: flex;
+	justify-content: center;
+}
+
+.coin {
+	background: #ffd900;
+	border: #d8b800 10px solid;
+	outline: #ffd900 10px solid;
+	margin-top: 10px;
+	color: #d8b800;
+	width: 200px;
+	height: 200px;
+	font-size: 160px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	span {
+		transform: translate(12px, 12px);
+	}
+}
+
+.dollars span {
+	position: absolute;
+	z-index: 10;
+
+	animation: {
+		name: dollar;
+		duration: 1s;
+		fill-mode: forwards
+	}
+}
+
+@keyframes dollar {
+	from {
+		transform: translateY(0);
+	}
+
+	to {
+		transform: translateY(-50px);
+		opacity: 0;
+	}
+}
