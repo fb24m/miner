@@ -4,17 +4,21 @@ import { MouseEvent, useState } from 'react'
 
 const Home = () => {
 	const [dollars, setDollars] = useState([<></>])
+	const [balance, setBalance] = useState(0)
 
 	const addDollar = (e: MouseEvent<HTMLDivElement>) => {
-		setDollars([...dollars, <span style={{ top: e.clientY, left: e.clientX }}>+1</span>])
+		setDollars([...dollars, <span style={{ top: e.clientY, left: e.clientX }}>+2</span>])
 
 		if (dollars.length >= 100) {
 			setDollars([])
 		}
+
+		setBalance(balance + 2)
 	}
 
 	return (
 		<Container>
+			Баланс: {balance}
 			<div className={styles.grid}>
 				<div className={styles.el}>ур.1</div>
 				<div className={styles.el}>ур.6</div>
